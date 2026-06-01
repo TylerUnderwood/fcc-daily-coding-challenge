@@ -1,3 +1,94 @@
 body {
+    display: flex;
+    flex-direction: column;
     margin: 0;
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+main {
+    flex: 1 0 auto;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+input {
+    width: 100%;
+    max-width: 360px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 1.2em;
+    margin-bottom: 0.5rem;
+}
+h1:first-child, h2:first-child, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+    margin-top: 0;
+}
+h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:last-child {
+    margin-bottom: 0;
+}
+
+/* === UTILITIES === */
+
+.flex {
+    display: flex;
+}
+
+.flex-fill {
+    flex: 1 0 auto;
+}
+
+/* === REUSABLE === */
+
+.Title {
+    display: inline-block;
+}
+
+.Link {
+    font-family: monospace;
+}
+
+.Form {
+    display: block;
+}
+
+.Label {
+    font-family: monospace;
+    font-weight: bold;
+}
+
+.Section {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+.Section__wrap {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: 720px;
+}
+
+/* === UNIQUE === */
+
+.TopNavBar {
+    background-color: #f0f0ff;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.Header {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.Main {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.Footer {
+    background-color: #f0f0ff;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }

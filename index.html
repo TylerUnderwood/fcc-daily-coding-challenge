@@ -5,22 +5,66 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="./styles/index.css" rel="stylesheet">
-    <script src="./scripts/index.js"></script>
     <title>FCC - Daily Coding Challenge</title>
 </head>
 <body>
-    <nav id="top-navbar" style="display: none">
-        <a href="https://github.com/TylerUnderwood">TylerUnderwood on Github</a>
+    <nav class="Section TopNavBar">
+        <div class="Section__wrap flex">
+            <div class="flex-fill"></div>
+            <a id="todaysChallenge" class="Link" href="https://www.freecodecamp.dev/learn/daily-coding-challenge/">
+                Todays Challenge &#x1F86D;
+            </a>
+        </div>
     </nav>
-    <main>
-        <a href="https://www.freecodecamp.dev/learn/daily-coding-challenge/">
-            <h1>Daily Coding Challenge</h1>
-        </a>
+    <header class="Section Header">
+        <div class="Section__wrap">
+            <h1 class="Title">Daily Coding Challenge</h1>
+        </div>
+    </header>
+    <main class="Main">
+        <section class="Section">
+            <div class="Section__wrap">
+                <h2>Challenger Setup</h2>
+                <form id="challengerSetupForm" class="Form">
+                    <label for="userSelect" class="Label">
+                        Who is testing today?
+                    </label>
+                    <br/>
+                    <input list="userNamesDataList" id="userSelect" name="userSelect" />
+                    <span class="js__showCurrentUser"></span>
+                    <br/><br/>
+                    <label for="dateSelect" class="Label">
+                        What day are we testing?
+                    </label>
+                    <br/>
+                    <input type="date" id="dateSelect" name="dateSelect" />
+                    <span class="js__showCurrentDate"></span>
+                    <br/><br/>
+                    <button type="submit">
+                        Load
+                    </button>
+                </form>
+                <p><strong>WIP:</strong> This will save as a cookie for you to refresh</p>
+            </div>
+        </section>
     </main>
+    <footer class="Section Footer">
+        <div class="Section__wrap">
+            <span>&#x1F517; Challenger's Github</span>
+            <ul id="challengersGithubList"></ul>
+        </div>
+    </footer>
+
+    <!-- DATALISTs -->
+    <datalist id="userNamesDataList">
+        <option value="TylerUnderwood"></option>
+        <!-- <option value="BoltenBeeper"></option> -->
+    </datalist>
 </body>
 <script src="./scripts/DCC/index.js"></script>
-<script src="./scripts/DCC/TylerUnderwood/2026-06-01.js"></script>
-<script src="./scripts/DCC/Question/2026-06-01.js"></script>
+<script id="currentlyTestingScript" src="./scripts/DCC/TylerUnderwood/2026-06-01.js"></script>
+<script id="currentQuestionScript" src="./scripts/DCC/Question/2026-06-01.js"></script>
+<script src="./scripts/index.js"></script>
 <script>
 if (typeof currentTest !== 'undefined') {
     testsLogger(currentTest.label, currentTest.tests)
