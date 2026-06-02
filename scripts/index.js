@@ -1,28 +1,29 @@
-// Init main form
-const initChallengeSetup = (defaultUser) => {
-    const currentlyTestingScript =
-        document.getElementById('currentlyTestingScript') // HTMLScriptElement
-    const currentQuestionScript =
-        document.getElementById('currentQuestionScript') // HTMLScriptElement
-    const userSelect =
-        document.getElementById('userSelect') // HTMLInputElement
-    const dateSelect =
-        document.getElementById('dateSelect') // HTMLInputElement
+// INITIALIZE CHALLENGE
+
+// Expects type Date, returns type String (yyyy-mm-dd)
+const dateFormatter = (date) => {
+    return date.toISOString().split('T')[0]
+}
+
+const scriptPath = (folder, date) => {
+    return `./scripts/DCC/${folder}/${date}.js`
+}
+
+const addChallengeScript = (folder, date) => {
+    const script = document.createElement('script')
+
+    script.src = scriptPath(folder, date)
+    script.type = 'text/javascript'
+    script.async = true // Prevents the script from blocking HTML parsing
+
+    document.head.appendChild(script)
+}
+
+const updateDisplayElements = (user, date) => {
     const currentUserElements =
         document.querySelectorAll('.js__showCurrentUser') // HTMLElement
     const currentDateElements =
         document.querySelectorAll('.js__showCurrentDate') // HTMLElement
-
-    // Expects type Date, returns type String (yyyy-mm-dd)
-    const dateFormatter = (_date) => {
-        return _date.toISOString().split('T')[0]
-    }
-
-    let user = defaultUser // String (no spaces)
-    let date = dateFormatter(new Date()) // String (yyyy-mm-dd)
-
-    userSelect.value = ''
-    dateSelect.value = date
 
     const fillDisplayElements = (elems, text) => {
         elems.forEach((elem) => {
@@ -31,25 +32,45 @@ const initChallengeSetup = (defaultUser) => {
             `);
         })
     }
+
     fillDisplayElements(currentUserElements, user)
     fillDisplayElements(currentDateElements, date)
+}
 
-    const scriptPathConcat = (folder, date) => {
-        return `./scripts/DCC/${folder}/${date}.js`
-    }
+// Init Challenge
+const initChallengeSetup = (defaultUser) => {
+    const form =
+        document.getElementById('challengerSetupForm') // HTMLFormElement
+    const userSelect =
+        document.getElementById('userSelect') // HTMLInputElement
+    const dateSelect =
+        document.getElementById('dateSelect') // HTMLInputElement
+    const storedUser = localStorage.getItem('user')
+    const storedDate = localStorage.getItem('date')
 
-    // currentlyTestingScript.src = scriptPathConcat(user, date)
-    // currentQuestionScript.src = scriptPathConcat('Question', date)
+    let user = storedUser || defaultUser // String (no spaces)
+    let date = storedDate || dateFormatter(new Date()) // String (yyyy-mm-dd)
 
-    userSelect.addEventListener('change', (event) => {
-        console.log('event:', event.target)
-        console.log('userSelect:', userSelect.value)
-    });
+    updateDisplayElements(user, date)
 
-    dateSelect.addEventListener('change', (event) => {
-        console.log('event:', event.target)
-        console.log('dateSelect:', dateSelect.value)
-    });
+    // Setup form element defaults
+    userSelect.value = ''
+    dateSelect.value = date
+
+    // Init form
+    form.addEventListener('submit', (event) => {
+        event.preventDefault()
+
+        // Store the item in localStorage (Key, Value)
+        localStorage.setItem('user', userSelect.value)
+        localStorage.setItem('date', dateSelect.value)
+
+        location.reload()
+    })
+
+    // build scripts
+    addChallengeScript(user, date)
+    addChallengeScript('Question', date)
 }
 
 // Add users from datalist to footer
@@ -58,7 +79,8 @@ const initChallengerList = () => {
         document.getElementById('userNamesDataList') // HTMLDataListElement
     const challengersGithubList =
         document.getElementById('challengersGithubList') // HTMLUListElement
-    const userNames = Array.from(userNamesDataList.options).map(option => option.value)
+    const userNames =
+        Array.from(userNamesDataList.options).map(option => option.value)
 
     userNames.forEach((name) => {
         challengersGithubList.insertAdjacentHTML('beforeend', `
@@ -68,7 +90,7 @@ const initChallengerList = () => {
 }
 
 // Init all the things
-document.addEventListener("DOMContentLoaded", (event) => {
+document.addEventListener('DOMContentLoaded', (event) => {
     console.log('--- INITIALIZING ---')
 
     initChallengerList()

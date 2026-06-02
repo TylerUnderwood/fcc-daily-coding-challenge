@@ -8,3 +8,5 @@ const currentTest = {
     {guess: getCombinations(13), answer: 742900},
   ]
 }
+
+testsLogger(currentTest.label, currentTest.tests)

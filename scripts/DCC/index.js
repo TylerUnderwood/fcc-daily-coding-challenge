@@ -22,11 +22,3 @@ const testsLogger = (label, tests) => {
 
   console.groupEnd()
 }
-
-const demoTest = {
-    label: "Demo Test",
-    tests: [
-        {guess: "Right", answer: "Right"},
-        {guess: "Error", answer: "Wrong"}
-    ]
-}
