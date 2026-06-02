@@ -68,9 +68,15 @@ const initChallengeSetup = (defaultUser) => {
         location.reload()
     })
 
+    // TODO: Add clear button to remove storage
+
     // build scripts
     addChallengeScript(user, date)
-    addChallengeScript('Question', date)
+    // Wait a tick to load prev
+    // NEED TO MAKE A BETTER METHOD!!!
+    setTimeout(() => {
+        addChallengeScript('Question', date)
+    }, 100)
 }
 
 // Add users from datalist to footer
