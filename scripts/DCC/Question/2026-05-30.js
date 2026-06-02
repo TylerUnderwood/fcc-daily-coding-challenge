@@ -13,3 +13,5 @@ const currentTest = {
     {guess: getBestHand(["As", "Ks", "Qs", "Js", "Ts"]), answer: "Royal Flush"},
   ]
 }
+
+testsLogger(currentTest.label, currentTest.tests)

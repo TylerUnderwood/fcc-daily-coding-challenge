@@ -8,3 +8,5 @@ const currentTest = {
     {guess: isValidSchema({ posts: 25 }), answer: false},
   ]
 }
+
+testsLogger(currentTest.label, currentTest.tests)
