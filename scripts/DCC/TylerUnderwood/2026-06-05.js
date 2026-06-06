@@ -31,7 +31,7 @@ function isValidSchema(obj) {
     if (!obj.hasOwnProperty(key)) {
       console.warn('Missing key:', key)
       hasRequiredKeys = false
-      return
+      continue
     }
 
     i++
@@ -64,7 +64,7 @@ function isValidSchema(obj) {
     if (currentType !== expectedType) {
       console.warn('Invalid', key, 'typeof:', currentType, '\n  Expected:', expectedType)
       hasValidTypes = false
-      return
+      continue
     }
   }
 
@@ -82,7 +82,7 @@ function isValidSchema(obj) {
       // If item is not a string, mark it and break out
       if (typeof arr[i] !== 'string') {
         isAllStrings = false
-        return
+        continue
       }
       i++
     }
