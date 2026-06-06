@@ -4,10 +4,12 @@ const validUserSchema = {
   username: 'string',
   posts: 'number',
   verified: 'boolean',
-  role: validUserRoles,
+  role: 'string', // validUserRoles
   supporter: 'boolean', // ?
   badges: 'array' // string[]
 }
+
+const optionalKeys = ['supporter']
 
 let testIteration = 0
 
@@ -16,81 +18,78 @@ function isValidSchema(obj) {
   console.log(`%c Test ${testIteration}.`, 'font-size: 14px;')
 
   const validKeys = Object.keys(validUserSchema)
-  let hasValidKeys = true
+  const requiredKeys = validKeys.filter(key => !optionalKeys.includes(key))
 
+  // Quick check for all required keys
+  let hasRequiredKeys = true
   let i = 0
-  while (i < validKeys.length && hasValidKeys) {
-    let key = validKeys[i]
-    i++
+  // While loop lets us break out after first error
+  while (hasRequiredKeys && i < requiredKeys.length) {
+    let key = requiredKeys[i]
 
-    // Skip if optional key
-    if (key === 'supporter') continue
-
+    // If missing key, mark it and break out
     if (!obj.hasOwnProperty(key)) {
       console.warn('Missing key:', key)
-      hasValidKeys = false
+      hasRequiredKeys = false
+      return
     }
+
+    i++
   }
 
-  if (!hasValidKeys) return false
+  if (!hasRequiredKeys) return false
 
-  const invalidTypeOfWarn = (key, invalidType, expectedType) => {
-    console.warn('Invalid', key, 'typeof:', invalidType, '\n  Expected:', expectedType)
-  }
-
-  const simpleTypeValidation = (key) => {
+  // This checks for first level types. We can be more detailed after
+  let hasValidTypes = true
+  i = 0
+  while (hasValidTypes && i < validKeys.length) {
+    const key = validKeys[i]
     const currentType = typeof obj[key]
     const expectedType = validUserSchema[key]
 
+    // Up the iteration early, to break when exception found
+    i++
+
+    // If missing optional key, continue
+    if (currentType === undefined && optionalKeys.includes(currentType)) {
+      continue
+    }
+
+    // If expected array and is array, continue
+    if (expectedType === 'array' && Array.isArray(obj[key])) {
+      continue
+    }
+
+    // If invalid type, mark it and break out
     if (currentType !== expectedType) {
-      invalidTypeOfWarn(key, currentType, expectedType)
-      return false
+      console.warn('Invalid', key, 'typeof:', currentType, '\n  Expected:', expectedType)
+      hasValidTypes = false
+      return
     }
-    return true
   }
-  if (!simpleTypeValidation('username')) return false
-  if (!simpleTypeValidation('posts')) return false
-  if (!simpleTypeValidation('verified')) return false
 
-  const roleValidation = (role) => {
-    if (typeof role !== 'string') {
-      invalidTypeOfWarn('role', typeof role, 'string')
-      return false
-    }
+  if (!hasValidTypes) return false
 
-    if (!validUserRoles.find(role => role === obj.role)) {
-      console.warn('Not a valid user role:', obj.role)
-      return false
-    }
-
-    return true
-  }
-  if (!roleValidation(obj.role)) return false
-
-  if (obj.hasOwnProperty('supporter')) {
-    if (!simpleTypeValidation('supporter')) return false
+  if (!validUserRoles.find(role => role === obj.role)) {
+    console.warn('Not a valid user role:', obj.role)
+    return false
   }
 
   const oopsAllStrings = (arr) => {
     let isAllStrings = true
     let i = 0
     while (isAllStrings && i < arr.length) {
+      // If item is not a string, mark it and break out
       if (typeof arr[i] !== 'string') {
         isAllStrings = false
-        return false
+        return
       }
       i++
     }
-
-    return true
+    return isAllStrings
   }
-  if (Array.isArray(obj.badges)) {
-    if (!oopsAllStrings(obj.badges)) return false
-  } else {
-    invalidTypeOfWarn('badges', typeof obj.badges, 'array')
-    return false
-  }
+  if (!oopsAllStrings(obj.badges)) return false
 
-  // WOW you made it the whole way though! Here is your prize
+  // WOW you made it the whole way through! Here is your prize
   return true
 }
