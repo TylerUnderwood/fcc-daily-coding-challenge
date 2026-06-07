@@ -9,9 +9,9 @@
 //   badges: string[]
 // }
 
-// {
-//   users: UserProfile[]
-// }
+const demo = {
+  users: UserProfile // []
+}
 
 function isValidSchema(obj) {
 
