@@ -51,7 +51,7 @@ function isValidSchema(obj) {
     i++
 
     // If missing optional key, continue
-    if (currentType === undefined && optionalKeys.includes(currentType)) {
+    if (currentType === 'undefined' && optionalKeys.includes(key)) {
       continue
     }
 
