@@ -14,9 +14,4 @@ const currentTest = {
   ]
 }
 
-
-
-
-
-
 testsLogger(currentTest.label, currentTest.tests)
