@@ -1,5 +1,5 @@
 const currentTest = {
-  label: "isValidSchema",
+  label: "getJetLagHours",
   tests: [
     {guess: getJetLagHours("Istanbul", "Hong Kong", 10, "east"), answer: 6.5},
     {guess: getJetLagHours("London", "New York", 8, "west"), answer: 5.8},
