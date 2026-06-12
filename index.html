@@ -32,20 +32,25 @@
                         Who is testing today?
                     </label>
                     <br/>
-                    <input list="userNamesDataList" id="userSelect" name="userSelect" />
+                    <input list="userNamesDataList" id="userSelect" name="userSelect" class="Field" />
                     <span class="js__showCurrentUser"></span>
                     <br/><br/>
                     <label for="dateSelect" class="Label">
                         What day are we testing?
                     </label>
                     <br/>
-                    <input type="date" id="dateSelect" name="dateSelect" />
+                    <input type="date" id="dateSelect" name="dateSelect" class="Field" />
                     <span class="js__showCurrentDate"></span>
+                    <br/><br/>
+                    <label for="resetDateToggle">
+                        <input id="resetDateToggle" type="checkbox">
+                        <span class="Label">Reset the date on a new day</span>
+                    </label>
                     <br/><br/>
                     <button type="submit">
                         Load
                     </button>
-                    <button type="reset">
+                    <button type="reset" label="Clear Local Storage">
                         Clear
                     </button>
                 </form>
