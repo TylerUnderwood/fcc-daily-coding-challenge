@@ -1,6 +1,6 @@
-const currentTest = {
-  label: "getBestHand",
-  tests: [
+testsLogger(
+  "getBestHand",
+  [
     {guess: getBestHand(["7s", "7h", "7d", "2c", "5h"]), answer: "Three of a Kind"},
     {guess: getBestHand(["Ks", "Kh", "Kd", "4s", "4h"]), answer: "Full House"},
     {guess: getBestHand(["2h", "5h", "7h", "9h", "Jh"]), answer: "Flush"},
@@ -12,6 +12,4 @@ const currentTest = {
     {guess: getBestHand(["Ts", "Th", "7c", "6d", "5h"]), answer: "Pair"},
     {guess: getBestHand(["As", "Ks", "Qs", "Js", "Ts"]), answer: "Royal Flush"},
   ]
-}
-
-testsLogger(currentTest.label, currentTest.tests)
+)
