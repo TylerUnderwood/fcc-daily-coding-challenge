@@ -64,7 +64,7 @@ const getChallengeData = () => {
         date = today
         localStorage.setItem('date', today)
         localStorage.setItem('lastDateReset', today)
-        console.log(`As requested, the date has been reset to today`)
+        console.warn(`As requested, the date has been reset to today`)
     }
 
     return { user, date }
@@ -161,6 +161,4 @@ document.addEventListener('DOMContentLoaded', (event) => {
             console.timeEnd(`Challenge Script Speed`)
         })
     })
-
-
 });

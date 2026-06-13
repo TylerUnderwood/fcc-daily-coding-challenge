@@ -1,4 +1,5 @@
-testsLogger("getBestHand",
+testsLogger(
+  "getBestHand",
   [
     {guess: getBestHand(["7s", "7h", "7d", "2c", "5h"]), answer: "Three of a Kind"},
     {guess: getBestHand(["Ks", "Kh", "Kd", "4s", "4h"]), answer: "Full House"},

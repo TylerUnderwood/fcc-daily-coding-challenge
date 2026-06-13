@@ -1,6 +1,6 @@
-const currentTest = {
-  label: "getJetLagHours",
-  tests: [
+testsLogger(
+  "getJetLagHours",
+  [
     {guess: getJetLagHours("Istanbul", "Hong Kong", 10, "east"), answer: 6.5},
     {guess: getJetLagHours("London", "New York", 8, "west"), answer: 5.8},
     {guess: getJetLagHours("Hong Kong", "Tokyo", 4, "east"), answer: 1.6},
@@ -9,6 +9,4 @@ const currentTest = {
     {guess: getJetLagHours("Tokyo", "Dubai", 9, "west"), answer: 5.9},
     {guess: getJetLagHours("New York", "Istanbul", 10, "east"), answer: 9.5},
   ]
-}
-
-testsLogger(currentTest.label, currentTest.tests)
+)
