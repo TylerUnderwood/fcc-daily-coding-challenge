@@ -21,32 +21,44 @@
     <header class="Section Header">
         <div class="Section__wrap">
             <h1 class="Title">Daily Coding Challenge</h1>
+            <ul>
+                <li>Use your own IDE.</li>
+                <li>Use your browser's console to test your code.</li>
+                <li>Store solutions in the repo.</li>
+            </ul>
         </div>
     </header>
     <main class="Main">
         <section class="Section">
             <div class="Section__wrap">
                 <h2>Challenger Setup</h2>
-                <form id="challengerSetupForm" class="Form">
+                <form id="challengerSetupForm" class="Form mt-2">
                     <label for="userSelect" class="Label">
                         Who is testing today?
                     </label>
                     <br/>
-                    <input list="userNamesDataList" id="userSelect" name="userSelect" />
+                    <input list="userNamesDataList" id="userSelect" name="userSelect" class="Field" />
                     <span class="js__showCurrentUser"></span>
                     <br/><br/>
                     <label for="dateSelect" class="Label">
                         What day are we testing?
                     </label>
                     <br/>
-                    <input type="date" id="dateSelect" name="dateSelect" />
+                    <input type="date" id="dateSelect" name="dateSelect" class="Field" />
                     <span class="js__showCurrentDate"></span>
+                    <br/><br/>
+                    <label for="resetDateToggle">
+                        <input id="resetDateToggle" type="checkbox">
+                        <span class="Label">Reset the date on a new day</span>
+                    </label>
                     <br/><br/>
                     <button type="submit">
                         Load
                     </button>
+                    <button type="reset" label="Clear Local Storage">
+                        Clear
+                    </button>
                 </form>
-                <p><strong>WIP:</strong> This will save as a cookie for you to refresh</p>
             </div>
         </section>
     </main>

@@ -1,6 +1,6 @@
-const currentTest = {
-  label: "isValidSchema",
-  tests: [
+testsLogger(
+  "isValidSchema",
+  [
     {guess: isValidSchema({ username: "gill", posts: 12, verified: false, role: "creator", supporter: false, badges: [ "early-adopter", "popular" ] }), answer: true},
     {guess: isValidSchema({ username: "tonya", posts: 299, verified: true, role: "moderator", supporter: true, badges: [ "streak-master", "veteran" ], followers: 1233 }), answer: true},
     {guess: isValidSchema({ username: "zara", posts: 0, verified: false, role: "user", supporter: false, badges: [] }), answer: true},
@@ -12,6 +12,4 @@ const currentTest = {
     {guess: isValidSchema({ username: "carrie", verified: true, role: "moderator", supporter: true, badges: [ "helper", "sharer" ] }), answer: false},
     {guess: isValidSchema({ username: true, posts: 75, verified: true, role: "creator", supporter: true, badges: [ "veteran" ] }), answer: false},
   ]
-}
-
-testsLogger(currentTest.label, currentTest.tests)
+)
