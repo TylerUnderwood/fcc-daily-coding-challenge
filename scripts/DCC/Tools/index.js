@@ -30,7 +30,6 @@
  */
 
 function convertDailyQuestion(dailyQuestion) {
-
     // First we need split the daily question into individual test cases
     const testCases = dailyQuestion.split('\n').filter(line => line.trim() !== '');
 
@@ -62,21 +61,13 @@ function convertDailyQuestion(dailyQuestion) {
         return `{ guess: ${testCase.guess}, answer: ${testCase.answer} }`;
     })
 
-    const formattedTest = `testsLogger("${testName}", [
-        ${formattedTestCases.join(',\n        ')}
-    ])`
+    const formattedTest =
+`testsLogger("${testName}", [
+    ${formattedTestCases.join(',\n    ')}
+])`
 
     return formattedTest
 }
-
-const todaysQuestion = `1. isValidCard("4532015112830366") should return true.
-Waiting:2. isValidCard("5425233430109903") should return true.
-Waiting:3. isValidCard("371449635398431") should return true.
-Waiting:4. isValidCard("6011111111111117") should return true.
-Waiting:5. isValidCard("4532015112830367") should return false.
-Waiting:6. isValidCard("1234567890123456") should return false.
-Waiting:7. isValidCard("4532015112830368") should return false.`
-
 
 // Parse the daily question for the user
 const initParseTodaysQuestion = () => {
