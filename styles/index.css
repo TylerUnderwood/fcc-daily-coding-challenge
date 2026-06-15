@@ -14,6 +14,13 @@ input {
     display: inline-block;
 }
 
+textarea {
+    display: block;
+    width: 100%;
+    max-width: 360px;
+    height: 5rem;
+}
+
 p, ul, ol {
     margin-top: 0.5rem;
     margin-bottom: 0;
@@ -50,6 +57,18 @@ h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:la
 
 .mt-3 {
     margin-top: 1rem;
+}
+
+.ml-auto {
+    margin-left: auto;
+}
+
+.pl-3 {
+    padding-left: 1rem;
+}
+
+.w-full {
+    width: 100%;
 }
 
 /* === REUSABLE === */
