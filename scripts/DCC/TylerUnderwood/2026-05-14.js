@@ -1,21 +1,3 @@
-// 2026-05-15
-function sleepDebt(hoursSlept, targetHours) {
-  let debtHours = targetHours;
-
-  hoursSlept.forEach(sleepHours => {
-    debtHours += targetHours - sleepHours
-  })
-
-  return debtHours > 0 ? debtHours : 0;
-}
-
-console.log('01.', sleepDebt([6, 6, 6, 6, 6, 6], 8))
-console.log('02.', sleepDebt([6, 7, 8, 4, 8, 6], 7))
-console.log('03.', sleepDebt([10, 10, 9, 10, 9, 11], 9))
-console.log('04.', sleepDebt([8, 7, 6, 7, 6, 8], 6))
-console.log('05.', sleepDebt([8, 9, 10, 9, 10, 7], 7))
-
-
 // NOT COMPLETE
 function isMirrorImage(str1, str2) {
   const arr1 = Array.from(str1)
