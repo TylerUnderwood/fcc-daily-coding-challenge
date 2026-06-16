@@ -42,16 +42,16 @@ function convertDailyQuestion(dailyQuestion) {
         // Answer will have a trailing period, so we remove it
         const answer = answerDirty.replace(/\.$/, '');
 
-        // Regex to get function name (string before first '(') and parameters (string between the parentheses)
+        // Regex to get function name (string before first '('), and parameters (string between the parentheses)
         const funcRegex = /(\w+)\((.*)\)/;
-        // Match with find three groups: the full match, the function name, and the parameters
-        // eg: ["funcName(\"param1\", \"param2\")", "funcName", "\"param1\", \"param2\""]
+        // Match will find three groups: the full match, the function name, and the parameters
+        // eg: [`funcName("param1", "param2")`, `funcName`, `"param1", "param2"`]
         const funcMatch = guessDirty.match(funcRegex);
 
         // Set our guess to the full function call
         const guess = funcMatch ? funcMatch[0] : '';
 
-        // Now we can use the function name to set the test name
+        // Use the function name to set the test name
         testName = funcMatch ? funcMatch[1] : '';
 
         return { guess: guess.trim(), answer: answer.trim() };
@@ -70,9 +70,9 @@ function convertDailyQuestion(dailyQuestion) {
 };
 
 // Parse the daily question for the user
-const initParseTodaysQuestion = () => {
-    const questionButton = document.getElementById('parseTodaysQuestion');
-    const questionTextarea = document.getElementById('todaysQuestion');
+const initParseDailyQuestion = () => {
+    const questionButton = document.getElementById('parseDailyQuestion');
+    const questionTextarea = document.getElementById('dailyQuestion');
 
     questionButton.addEventListener('click', () => {
         const question = questionTextarea.value.trim();
@@ -87,5 +87,5 @@ const initParseTodaysQuestion = () => {
 };
 
 document.addEventListener('DOMContentLoaded', (event) => {
-    initParseTodaysQuestion();
+    initParseDailyQuestion();
 });
