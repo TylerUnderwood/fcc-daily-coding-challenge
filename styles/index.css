@@ -59,6 +59,10 @@ h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:la
     margin-top: 1rem;
 }
 
+.mt-4 {
+    margin-top: 1.5rem;
+}
+
 .ml-auto {
     margin-left: auto;
 }
