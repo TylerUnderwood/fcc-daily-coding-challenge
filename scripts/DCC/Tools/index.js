@@ -66,23 +66,40 @@ function convertDailyQuestion(dailyQuestion) {
     ${formattedTestCases.join(',\n    ')}
 ])`;
 
-    return formattedTest;
+    // TODO: Update Error Handling to catch any errors that might occur during the formatting process
+    // Return promise that resolves to the formatted test
+    return new Promise((resolve, reject) => {
+        resolve(formattedTest);
+        reject(new Error('Failed to format test'));
+    });
 };
 
 // Parse the daily question for the user
 const initParseDailyQuestion = () => {
+    const questionForm = document.getElementById('parseDailyQuestionForm');
     const questionButton = document.getElementById('parseDailyQuestion');
     const questionTextarea = document.getElementById('dailyQuestion');
+    const questionMessage = document.getElementById('parseDailyQuestionMessage');
 
-    questionButton.addEventListener('click', () => {
+    const handleParseDailyQuestion = () => {
         const question = questionTextarea.value.trim();
+        const questionPromise = convertDailyQuestion(question);
 
-        if (question === '') {
-            alert('Please enter a question.');
-            return;
-        } else {
-            console.log(`${convertDailyQuestion(question)}`);
-        };
+        questionPromise.then((formattedQuestion) => {
+            // Log
+            console.log(`${formattedQuestion}`);
+            // Add to clipboard
+            navigator.clipboard.writeText(formattedQuestion);
+            questionMessage.textContent = 'Question parsed and copied to clipboard.';
+        }).catch((error) => {
+            console.error('Error parsing daily question:', error);
+            questionMessage.textContent = 'Error parsing daily question.';
+        });
+    };
+
+    questionForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        handleParseDailyQuestion();
     });
 };
 

@@ -89,6 +89,19 @@ h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:la
     display: block;
 }
 
+.FormMessage {
+    border-radius: 4px;
+    border: 1px solid color-mix(in srgb, yellow 100%, black 66%);
+    padding: 0.25rem 0.5rem;
+    background-color: yellow;
+    font-weight: bold;
+    font-size: 0.875rem;
+}
+
+.FormMessage:empty {
+    display: none;
+}
+
 .Field {
     width: 100%;
     max-width: 360px;
