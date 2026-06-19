@@ -132,8 +132,10 @@ const scriptPath = (folder, date) => {
 
 const addChallengeScript = (folder, date) => {
     const script = document.createElement('script')
+    // convert date with dashes to slashes
+    const folderFormatDate = date.replace(/-/g, '/')
 
-    script.src = scriptPath(folder, date)
+    script.src = scriptPath(folder, folderFormatDate)
     script.type = 'text/javascript'
     script.async = true // Prevents the script from blocking HTML parsing
 
