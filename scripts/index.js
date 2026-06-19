@@ -12,6 +12,14 @@ const checkDateFormat = (dateString) => {
     return regex.test(dateString)
 }
 
+// Update daily link in header
+const updateDailyLink = (date) => {
+    const dailyLink = document.getElementById('todaysChallenge')
+    if (dailyLink) {
+        dailyLink.href = `https://www.freecodecamp.dev/learn/daily-coding-challenge/${date}`
+    }
+}
+
 // Add users from datalist to footer
 const fillChallengerList = () => {
     const userNamesDataList =
@@ -23,7 +31,11 @@ const fillChallengerList = () => {
 
     userNames.forEach((name) => {
         challengersGithubList.insertAdjacentHTML('beforeend', `
-            <li><a href="https://github.com/${name}" class="Link">${name} &#x1F86D;</a></li>
+<li>
+    <a href="https://github.com/${name}" class="Link" target="_blank" rel="noopener noreferrer">
+        ${name} &#x1F86D;
+    </a>
+</li>
         `);
     })
 }
@@ -142,6 +154,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
     console.log(`User: ${user}`)
     console.log(`Date: ${date}`)
     console.log(`----------------------`)
+
+    updateDailyLink(date)
 
     fillDisplayElements(user, date)
 
