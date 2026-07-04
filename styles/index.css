@@ -126,13 +126,13 @@ h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:la
 
 /* === UNIQUE === */
 
-.TopNavBar {
+.Header {
     background-color: #f0f0ff;
     padding-top: 1rem;
     padding-bottom: 1rem;
 }
 
-.Header {
+.Hero {
     padding-top: 1rem;
     padding-bottom: 1rem;
 }
