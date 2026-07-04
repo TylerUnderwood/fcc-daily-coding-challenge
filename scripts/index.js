@@ -126,16 +126,12 @@ const initChallengeForm = (date) => {
     })
 }
 
-const scriptPath = (folder, date) => {
-    return `./scripts/DCC/${folder}/${date}.js`
-}
-
 const addChallengeScript = (folder, date) => {
     const script = document.createElement('script')
     // convert date with dashes to slashes
     const folderFormatDate = date.replace(/-/g, '/')
 
-    script.src = scriptPath(folder, folderFormatDate)
+    script.src = `./scripts/DCC/Challenge/${folder}/${folderFormatDate}.js`
     script.type = 'text/javascript'
     script.async = true // Prevents the script from blocking HTML parsing
 

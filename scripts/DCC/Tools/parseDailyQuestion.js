@@ -76,6 +76,14 @@ function convertDailyQuestion(dailyQuestion) {
 
 // Parse the daily question for the user
 const initParseDailyQuestion = () => {
+    const parseDailyQuestionSection = document.getElementById('section-parseDailyQuestion');
+    if (parseDailyQuestionSection) {
+        parseDailyQuestionSection.style.removeProperty('display');
+    } else {
+        console.error('Parse Daily Question section not found');
+        return;
+    }
+
     const questionForm = document.getElementById('parseDailyQuestionForm');
     const questionButton = document.getElementById('parseDailyQuestion');
     const questionTextarea = document.getElementById('dailyQuestion');
