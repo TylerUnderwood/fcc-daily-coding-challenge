@@ -1,3 +1,11 @@
+/**
+ * Given an array of daily stock prices and a budget (in dollars), calculate the maximum profit you could make by buying and selling the stock over the given period.
+ *
+ * - You may only sell after you buy.
+ * - You can only buy whole shares.
+ * - Return the maximum possible profit as a string, rounded down to the nearest cent and formatted to two decimal places.
+ */
+
 testsLogger("getMaxProfit", [
     { guess: getMaxProfit([5, 6], 50), answer: "10.00" },
     { guess: getMaxProfit([8, 2, 5, 10], 20), answer: "80.00" },
