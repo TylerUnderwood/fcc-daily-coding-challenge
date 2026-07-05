@@ -1,3 +1,9 @@
+/**
+ * Given two database objects, return the second object with any missing properties from the first filled in.
+ *
+ * Fields that already exist in the record should not be overwritten.
+ */
+
 testsLogger("migrateRecord", [
     { guess: migrateRecord({ username: "", posts: 0 }, { verified: true }), answer: { username: "", posts: 0, verified: true } },
     { guess: migrateRecord({ username: "", posts: 0 }, { username: "camper", posts: 5 }), answer: { username: "camper", posts: 5 } },
