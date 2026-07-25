@@ -26,9 +26,9 @@ const testsLogger = (label, tests) => {
     })
 
     if (guess === answer) {
-      console.log(msgText(`${index}. ${guess} CORRECT!`), msgStyle({bg: "225522", color: "55ff55"}))
+      console.log(msgText(`${index+1}. ${guess} CORRECT!`), msgStyle({bg: "225522", color: "55ff55"}))
     } else {
-      console.log(msgText(`${index}. ${guess} Expected ${answer}`), msgStyle({bg: "552222", color: "ff5555"}))
+      console.log(msgText(`${index+1}. ${guess} Expected ${answer}`), msgStyle({bg: "552222", color: "ff5555"}))
     }
   })
 
